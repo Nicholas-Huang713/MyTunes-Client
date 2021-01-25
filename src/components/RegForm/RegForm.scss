@@ -1,0 +1,14 @@
+@import '../../styles/config';
+
+.reg-form {
+    box-shadow: $shadow-primary;
+        
+}
+
+.reg-form-title {
+    @include form-title-style
+}
+
+.reg-form-content {
+    padding: $form-content-padding;
+}

@@ -1,0 +1,14 @@
+@import '../../styles/config';
+
+.log-form {
+    box-shadow: $shadow-primary;
+        
+}
+
+.log-form-title {
+    @include form-title-style
+}
+
+.log-form-content {
+    padding: $form-content-padding;
+}

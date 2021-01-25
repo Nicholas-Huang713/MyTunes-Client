@@ -1,0 +1,11 @@
+@import '../../styles/config';
+
+.reg {
+    @include logreg-style;
+}
+
+@media (max-width: 800px) {
+    .reg form {
+        width: $logreg-width-sm;
+    }
+}

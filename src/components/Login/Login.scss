@@ -1,0 +1,11 @@
+@import '../../styles/config';
+
+.login {
+    @include logreg-style;
+}
+
+@media (max-width: 768px) {
+    .login form {
+        width: $logreg-width-sm;
+    }
+}
