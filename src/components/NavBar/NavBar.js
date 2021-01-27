@@ -5,16 +5,18 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import './NavBar.scss';
 import { useHistory } from 'react-router-dom';
-import {UserContext} from '../../helpers/UserContext';
+import {UserContext, UserDataContext} from '../../helpers/UserContext';
+import {getJwt, removeJwt} from '../../helpers/jwt';
 
 export default function NavBar() {
     let history = useHistory();
     const {user, setUser} = useContext(UserContext);
+    const {userData, setUserData} = useContext(UserDataContext);
 
     const handleLogout = () => {
-        localStorage.removeItem('token');
+        removeJwt();
         setUser(null);
-        history.push('/')
+        history.push('/');
     }
 
     return (
@@ -26,16 +28,16 @@ export default function NavBar() {
                     <Nav className="mr-auto">
                         {user && 
                             <>
-                                <Nav.Link>Stuff</Nav.Link>
+                                <Nav.Link href="/dashboard">Dashboard</Nav.Link>
                                 <Nav.Link>Pricing</Nav.Link>
                             </>
                         }
                     </Nav>
                     <Nav>
                         {user ? (
-                            <NavDropdown title={<AccountCircleIcon />} id="collapsible-nav-dropdown" drop='left'>
+                            <NavDropdown title={<><AccountCircleIcon /> {userData !==null && `${userData.username}`}</>} id="collapsible-nav-dropdown" drop='left'>
                                 <NavDropdown.Item >Profile</NavDropdown.Item>
-                                <NavDropdown.Item >Dashboard</NavDropdown.Item>
+                                <NavDropdown.Item href="/dashboard">Dashboard</NavDropdown.Item>
                                 <NavDropdown.Item >Something</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
