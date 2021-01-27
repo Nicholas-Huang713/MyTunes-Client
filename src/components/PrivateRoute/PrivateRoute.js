@@ -12,7 +12,7 @@ export default function PrivateRoute({children}) {
         } else {
             setToken(jwt);
         }
-    }, [])
+    }, [history])
     return (
         <>
             {token? <>{children}</> : <>Loading...</>}

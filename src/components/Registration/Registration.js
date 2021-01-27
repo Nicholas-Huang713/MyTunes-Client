@@ -13,7 +13,6 @@ export default function Registration() {
         axios.post('http://localhost:5000/users/add', newUser)
             .then(res => {
                 const token = res.data;
-                console.log("token" + token);
                 localStorage.setItem('token', token);
                 history.push('/dashboard');
             })
