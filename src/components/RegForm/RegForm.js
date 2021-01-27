@@ -42,7 +42,7 @@ export default function RegForm({handleSubmit, errMsg}) {
     return (
         <Form className="reg-form" onSubmit={handleOnSubmit} noValidate validated={validated}>
             <div className="reg-form-title">Register Here</div>
-            {errMsg !== '' ? <span style={{color: 'red'}}>{errMsg}</span>: <></>}
+            {errMsg !== '' && <span style={{color: 'red'}}>{errMsg}</span>}
             <div className="reg-form-content">
                 {/* <Form.Group> */}
                 <Form.Group>
