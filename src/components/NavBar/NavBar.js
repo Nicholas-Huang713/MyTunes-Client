@@ -22,13 +22,13 @@ export default function NavBar() {
     return (
         <nav>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
-                <Navbar.Brand href="/">MyTunes</Navbar.Brand>
+                <Navbar.Brand style={{cursor: "pointer"}} onClick={() => history.push('/')}>MyTunes</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                         {user && 
                             <>
-                                <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                                <Nav.Link onClick={() => history.push('/dashboard')}>Dashboard</Nav.Link>
                                 <Nav.Link>Pricing</Nav.Link>
                             </>
                         }
@@ -37,15 +37,15 @@ export default function NavBar() {
                         {user ? (
                             <NavDropdown title={<><AccountCircleIcon /> {userData !==null && `${userData.username}`}</>} id="collapsible-nav-dropdown" drop='left'>
                                 <NavDropdown.Item >Profile</NavDropdown.Item>
-                                <NavDropdown.Item href="/dashboard">Dashboard</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => history.push('/dashboard')}>Dashboard</NavDropdown.Item>
                                 <NavDropdown.Item >Something</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
                             </NavDropdown>
                         ) : (
                             <>
-                                <Nav.Link href="/login">Login</Nav.Link>
-                                <Nav.Link href="/registration" eventKey={2}>
+                                <Nav.Link onClick={() => history.push('/login')}>Login</Nav.Link>
+                                <Nav.Link onClick={() => history.push('/registration')} eventKey={2}>
                                     Register
                                 </Nav.Link>
                             </>

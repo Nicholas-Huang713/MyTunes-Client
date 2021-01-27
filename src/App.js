@@ -8,6 +8,8 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.scss';
 import { UserContext, UserDataContext } from './helpers/UserContext';
+import {getJwt} from './helpers/jwt';
+import axios from 'axios';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -16,12 +18,21 @@ function App() {
   const userDataValue = useMemo(() => ({userData, setUserData}), [userData, setUserData]);
   
   useEffect(() => {
-    const loggedUser = localStorage.getItem('token');
+    const loggedUser = getJwt();
     console.log(loggedUser);
     if(loggedUser) {
-      setUser(loggedUser)
+      setUser(loggedUser);
+      axios({
+        url: 'http://localhost:5000/users/getlogged',
+        method: 'GET',
+        headers: {'Authorization' : `Bearer ${loggedUser}`}
+    })
+        .then(res => {
+            setUserData(res.data)
+        })
+        .catch(err => console.log(err))
     }
-  }, [])
+  }, [user])
 
   return (
     <>
