@@ -11,6 +11,10 @@ $shadow-primary:
 //form styles 
 $form-content-padding: 10px;
 
+// padding top and bottom
+$bot-padding: 48px;
+$top-padding: 60px;
+
 @mixin form-title-style {
     width: 100%;
     background: $color-primary;

@@ -1,13 +1,32 @@
 import React, {useEffect} from 'react'
-// import SideBar from '../../components/Sidebar/SideBar';
+import PlaylistCardContainerSm from '../../components/PlaylistCardContainerSm/PlaylistCardContainerSm';
+import PlaylistCardSm from '../../components/PlaylistCardSm/PlaylistCardSm';
+import PlaylistCardLg from '../../components/PlaylistCardLg/PlaylistCardLg';
+import './Dashboard.scss';
 
 export default function Dashboard() {
     // useEffect(() => {
 
     // }, [])
     return (
-        <div className="mt-5">
-
+        <div className="dashboard">
+            <h1>Your Playlists</h1>
+            <PlaylistCardContainerSm>
+                <PlaylistCardSm />
+                <PlaylistCardSm />
+                <PlaylistCardSm />
+                <PlaylistCardSm />
+                <PlaylistCardSm />
+                <PlaylistCardSm />
+            </PlaylistCardContainerSm>
+            <PlaylistCardContainerSm>
+                <PlaylistCardLg/>
+                <PlaylistCardLg/>
+                <PlaylistCardLg/>
+                <PlaylistCardLg/>
+                <PlaylistCardLg/>
+                
+            </PlaylistCardContainerSm>
         </div>
     )
 }

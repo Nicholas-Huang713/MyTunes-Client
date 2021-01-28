@@ -1,0 +1,25 @@
+.side-nav {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    width: 300px;
+}
+
+.content {
+    padding-left: 320px;
+    // width: 100vw;
+}
+
+.side-nav__list {
+    border: none;
+}
+
+
+@media (max-width: 768px) {
+    .side-nav {
+        display: none;
+    }
+    .content {
+        padding-left: 0;
+    }
+}

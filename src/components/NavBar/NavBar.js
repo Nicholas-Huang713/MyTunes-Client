@@ -6,12 +6,12 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import './NavBar.scss';
 import { useHistory } from 'react-router-dom';
 import {UserContext, UserDataContext} from '../../helpers/UserContext';
-import {getJwt, removeJwt} from '../../helpers/jwt';
+import {removeJwt} from '../../helpers/jwt';
 
 export default function NavBar() {
     let history = useHistory();
     const {user, setUser} = useContext(UserContext);
-    const {userData, setUserData} = useContext(UserDataContext);
+    const {userData} = useContext(UserDataContext);
 
     const handleLogout = () => {
         removeJwt();

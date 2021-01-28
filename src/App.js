@@ -4,6 +4,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import Dashboard from './components/Dashboard/Dashboard';
+import SideBar from './components/SideBar/SideBar';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.scss';
@@ -45,7 +46,9 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/registration" component={Registration} />
               <PrivateRoute>
-                <Route path="/dashboard" component={Dashboard} />  
+                <SideBar>
+                  <Route path="/dashboard" component={Dashboard} />
+                </SideBar> 
               </PrivateRoute>
             </Switch>
           </Layout>

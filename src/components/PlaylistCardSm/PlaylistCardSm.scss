@@ -1,0 +1,28 @@
+@import '../../styles/config'; 
+
+
+.playlist-card-sm {
+    width: 31%;
+    display: flex;
+    border:1px solid lightblue;
+    margin:0.5rem;
+    border-radius: 0.4rem;
+    background: $color-primary;
+    color: $color-secondary;
+    padding: 5px;
+    // div {
+    //     padding: 10px;
+    // }
+
+    .playlist-card-sm-img {
+        // flex-grow: 1;
+    }
+    .playlist-card-sm-title {
+        // flex-grow: 9;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        align-content: space-around;
+    }
+
+}

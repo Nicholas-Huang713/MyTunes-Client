@@ -1,36 +1,38 @@
 import React from 'react'
-import Tab from 'react-bootstrap/Tab';
-import Nav from 'react-bootstrap/Nav';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import ListGroup from 'react-bootstrap/ListGroup';
+import HomeIcon from '@material-ui/icons/Home';
+import SearchIcon from '@material-ui/icons/Search';
+import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
+import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import BotNav from '../../components/BotNav/BotNav';
+import './SideBar.scss';
 
-export default function SideBar() {
+export default function SideBar({children}) {
     return (
-        <div>
-            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-                <Row>
-                    <Col sm={3}>
-                    <Nav variant="pills" className="flex-column">
-                        <Nav.Item>
-                        <Nav.Link eventKey="first">Tab 1</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                        <Nav.Link eventKey="second">Tab 2</Nav.Link>
-                        </Nav.Item>
-                    </Nav>
-                    </Col>
-                    <Col sm={9}>
-                    <Tab.Content>
-                        <Tab.Pane eventKey="first">
-                            First Tab
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="second">
-                            Second Tab
-                        </Tab.Pane>
-                    </Tab.Content>
-                    </Col>
-                </Row>
-            </Tab.Container>
-        </div>
+        <>
+            <ListGroup className="side-nav">
+                <ListGroup.Item>
+                    <ListGroup variant="flush">
+                        <ListGroup.Item action><HomeIcon className="mr-1"/>Home</ListGroup.Item>
+                        <ListGroup.Item action><SearchIcon className="mr-1"/>Search</ListGroup.Item>
+                        <ListGroup.Item action><LibraryMusicIcon className="mr-1"/>Your Library</ListGroup.Item>
+                        <ListGroup.Item action><LibraryAddIcon className="mr-1"/>Create Playlist</ListGroup.Item>
+                        <ListGroup.Item action><FavoriteIcon className="mr-1"/>Liked Songs</ListGroup.Item>
+                    </ListGroup>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                    <ListGroup variant="flush">
+                        <ListGroup.Item action><HomeIcon className="mr-1"/>Home</ListGroup.Item>
+                        <ListGroup.Item action><SearchIcon className="mr-1"/>Search</ListGroup.Item>
+                        <ListGroup.Item action><LibraryMusicIcon className="mr-1"/>Your Library</ListGroup.Item>
+                        <ListGroup.Item action><LibraryAddIcon className="mr-1"/>Create Playlist</ListGroup.Item>
+                        <ListGroup.Item action><FavoriteIcon className="mr-1"/>Liked Songs</ListGroup.Item>
+                    </ListGroup>
+                </ListGroup.Item>
+            </ListGroup>
+            <div className="content">{children}</div>
+            <BotNav/>
+        </>
     )
 }

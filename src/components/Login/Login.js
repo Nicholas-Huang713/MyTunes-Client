@@ -18,7 +18,6 @@ export default function Login() {
         axios.post('http://localhost:5000/users/login', user)
             .then(res => {
                 const token = res.data;
-                // console.log('token' + token);
                 setJwt(token);
                 setUser(getJwt());
                 axios({

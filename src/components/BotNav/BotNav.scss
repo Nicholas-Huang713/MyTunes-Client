@@ -1,0 +1,13 @@
+.nav-bot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100vw;
+}
+
+@media (min-width: 768px) {
+    .nav-bot {
+        display: none;
+    }
+}
