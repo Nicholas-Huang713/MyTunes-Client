@@ -9,10 +9,13 @@
     border-radius: 0.4rem;
     background: $color-primary;
     color: $color-secondary;
-    padding: 5px;
+    padding: 10px;
     // div {
     //     padding: 10px;
     // }
+    &:hover {
+        background-color: gray;
+    }
 
     .playlist-card-sm-img {
         // flex-grow: 1;
@@ -22,7 +25,16 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        align-content: space-around;
+        align-content: space-between;
     }
+
+}
+
+.playlist-card-sm-playicon {
+    // width: 200px;
+    position: absolute;
+    // top: 1px;
+    // left: 5;
+    // right: 0.5;
 
 }

@@ -19,6 +19,7 @@ export default function Dashboard() {
                 <PlaylistCardSm />
                 <PlaylistCardSm />
             </PlaylistCardContainerSm>
+            <h2>User Playlists</h2>
             <PlaylistCardContainerSm>
                 <PlaylistCardLg/>
                 <PlaylistCardLg/>
