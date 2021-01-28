@@ -15,6 +15,14 @@ $form-content-padding: 10px;
 $bot-padding: 48px;
 $top-padding: 60px;
 
+
+//flexbox center styling
+@mixin style-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @mixin form-title-style {
     width: 100%;
     background: $color-primary;

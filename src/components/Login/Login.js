@@ -10,8 +10,8 @@ import './Login.scss';
 export default function Login() {
     const [errMsg, setErrMsg] = useState('');
     let history = useHistory();
-    const {user, setUser} = useContext(UserContext);
-    const {userData, setUserData} = useContext(UserDataContext);
+    const {setUser} = useContext(UserContext);
+    const {setUserData} = useContext(UserDataContext);
 
     const handleSubmit = (user) => {
         console.log(user)

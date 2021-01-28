@@ -1,6 +1,7 @@
-import {SEARCH_MUSIC} from './types';
+import {SEARCH_MUSIC, PLAY_SONG} from './types';
 import axios from 'axios';
 
+//search music
 export const searchMusic = (inputText) => dispatch => {
     const options = {
         method: 'GET',
@@ -22,3 +23,11 @@ export const searchMusic = (inputText) => dispatch => {
         console.error(error);
     });
 };
+
+//play song from playlist and set current song
+export const playSong = (songDetails) => dispatch => {
+    dispatch({
+        type: PLAY_SONG,
+        payload: songDetails
+    })
+}   

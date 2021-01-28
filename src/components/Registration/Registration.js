@@ -9,7 +9,7 @@ import {getJwt, setJwt} from '../../helpers/jwt';
 export default function Registration() {
     const [errMsg, setErrMsg] = useState('');
     let history = useHistory();
-    const {user, setUser} = useContext(UserContext);
+    const {setUser} = useContext(UserContext);
 
     const handleSubmit = (newUser) => {
         console.log(newUser);

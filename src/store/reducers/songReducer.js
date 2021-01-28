@@ -1,7 +1,8 @@
-import {SEARCH_MUSIC} from '../actions/types';
+import {SEARCH_MUSIC, PLAY_SONG} from '../actions/types';
 
 const initialState = {
     searchList: [],
+    currentSong: {}
 }
 
 export default function(state = initialState, action) {
@@ -10,6 +11,11 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 searchList: action.payload
+            }
+        case PLAY_SONG:
+            return {
+                ...state,
+                currentSong: action.payload
             }
         default:
             return state;

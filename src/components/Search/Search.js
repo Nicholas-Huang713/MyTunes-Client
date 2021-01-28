@@ -31,11 +31,19 @@ export default function Search() {
                     onKeyUp={handleSearch}
                     value={inputText}
                     onChange={e => setInputText(e.target.value)}
+                    list="music-search"
                 />
+                <datalist id="music-search">
+                    <option value="Boston"/>
+                    <option value="Cambridge"/>
+                </datalist>
                 <InputGroup.Append>
-                <Button variant="secondary" onClick={handleSearch}>Button</Button>
+                    <Button variant="secondary" onClick={handleSearch}>Button</Button>
                 </InputGroup.Append>
+                
             </InputGroup>
+            
+
             <div className="search__list">
                 <Playlist searchList={searchList}/>
             </div>

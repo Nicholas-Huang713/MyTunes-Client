@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import PlaylistCardContainerSm from '../../components/PlaylistCardContainerSm/PlaylistCardContainerSm';
 import PlaylistCardSm from '../../components/PlaylistCardSm/PlaylistCardSm';
 import PlaylistCardLg from '../../components/PlaylistCardLg/PlaylistCardLg';

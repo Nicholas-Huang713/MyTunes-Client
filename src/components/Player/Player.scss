@@ -1,0 +1,33 @@
+@import '../../styles/config';
+
+.player {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    background: $color-primary;
+    color: $color-secondary;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.player__title {
+    width: 15%;
+}
+
+.player__controls {
+    width: 50%;
+}
+.player__volume {
+    width: 15%;
+}
+
+@media (max-width: 768px) {
+    .player {
+        bottom: 50px;
+    }
+}

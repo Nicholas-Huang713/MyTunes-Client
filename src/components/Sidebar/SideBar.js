@@ -6,6 +6,7 @@ import LibraryMusicIcon from '@material-ui/icons/LibraryMusic';
 import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import BotNav from '../../components/BotNav/BotNav';
+import Player from '../../components/Player/Player';
 import './SideBar.scss';
 import {useHistory} from 'react-router-dom';
 
@@ -34,6 +35,7 @@ export default function SideBar({children}) {
                 </ListGroup.Item>
             </ListGroup>
             <div className="content">{children}</div>
+            <Player />
             <BotNav/>
         </>
     )
