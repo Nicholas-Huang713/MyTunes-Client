@@ -1,0 +1,28 @@
+@import '../../styles/config';
+
+.search {
+    
+    
+}
+
+.search__list {
+    overflow-y: auto;
+    height: 500px;
+}
+
+.search__input {
+    // background: black;
+    width: 50%;
+    margin: 10px;
+
+    // input {
+    //     background: $color-primary;
+    //     color: $color-secondary;
+    // }
+}
+
+@media (max-width: 768px) {
+    .search__input {
+        width: 95%;
+    }
+}

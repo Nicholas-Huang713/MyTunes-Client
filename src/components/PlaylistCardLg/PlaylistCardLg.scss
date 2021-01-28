@@ -1,5 +1,10 @@
+@import '../../styles/config';
+
 .playlist-card-lg {
     width: 19%;
     margin: 0.2rem;
     padding: 10px;
+    background: $color-primary;
+    color: $color-secondary;
 }
+

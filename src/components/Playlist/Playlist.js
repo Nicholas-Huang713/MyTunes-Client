@@ -1,37 +1,50 @@
-import React from 'react';
+import React, {useState} from 'react';
+import PlaylistRow from './PlaylistRow/PlaylistRow'
 import Table from 'react-bootstrap/Table';
+import Alert from 'react-bootstrap/Alert'
+import Button from 'react-bootstrap/Button'
 import './Playlist.scss';
 
-export default function Playlist() {
+export default function Playlist({searchList}) {
+    const [show, setShow] = useState(true);
+
     return (
+        <div className="playlist">
+        {searchList.length > 0 ? 
         <Table striped bordered hover variant="dark">
             <thead>
                 <tr>
                 <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>Title</th>
+                <th>Like</th>
+                <th>Duration</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                </tr>
-                <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <td>3</td>
-                <td colSpan="2">Larry the Bird</td>
-                <td>@twitter</td>
-                </tr>
+                {searchList.length > 0 && 
+                    searchList.map((song, index) => (
+                        <PlaylistRow key={song.id} song={song} index={index}/>
+                    )
+                )}
             </tbody>
         </Table>
+        :
+        <>
+            <Alert show={show} variant="info">
+                <Alert.Heading>Get Started Now!</Alert.Heading>
+                <p>
+                    Search for your favorite artist, album, or song
+                </p>
+                <hr />
+                <div className="d-flex justify-content-end">
+                <Button onClick={() => setShow(false)} variant="outline-secondary">
+                    Got it!
+                </Button>
+                </div>
+            </Alert>
+        </>    
+        }
+            
+        </div>
     )
 }

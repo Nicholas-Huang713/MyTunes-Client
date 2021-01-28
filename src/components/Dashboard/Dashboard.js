@@ -5,12 +5,10 @@ import PlaylistCardLg from '../../components/PlaylistCardLg/PlaylistCardLg';
 import './Dashboard.scss';
 
 export default function Dashboard() {
-    // useEffect(() => {
 
-    // }, [])
     return (
         <div className="dashboard">
-            <h1 className="mt-3">Your Playlists</h1>
+            <h2 className="mt-3">Your Playlists</h2>
             <PlaylistCardContainerSm>
                 <PlaylistCardSm />
                 <PlaylistCardSm />
@@ -19,10 +17,10 @@ export default function Dashboard() {
                 <PlaylistCardSm />
                 <PlaylistCardSm />
             </PlaylistCardContainerSm>
-            <div className="row mt-3 mr-4 ml-1">
+            <div className="row mt-3 mr-4 ">
                 <div className="col">
                     <h2>User Playlists</h2>
-                </div>
+                </div> 
                 <div className="col text-right mt-2">
                     See All
                 </div>
@@ -34,7 +32,6 @@ export default function Dashboard() {
                 <PlaylistCardLg/>
                 <PlaylistCardLg/>
                 <PlaylistCardLg/>
-                
             </PlaylistCardContainerSm>
         </div>
     )
