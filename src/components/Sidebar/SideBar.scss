@@ -1,3 +1,5 @@
+@import '../../styles/config'; 
+
 .side-nav {
     position: absolute;
     left: 0;
@@ -7,7 +9,7 @@
 
 .content {
     padding-left: 320px;
-    // width: 100vw;
+    padding-top: $top-padding;
 }
 
 .side-nav__list {

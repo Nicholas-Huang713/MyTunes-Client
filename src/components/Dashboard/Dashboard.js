@@ -10,7 +10,7 @@ export default function Dashboard() {
     // }, [])
     return (
         <div className="dashboard">
-            <h1>Your Playlists</h1>
+            <h1 className="mt-3">Your Playlists</h1>
             <PlaylistCardContainerSm>
                 <PlaylistCardSm />
                 <PlaylistCardSm />
@@ -19,7 +19,15 @@ export default function Dashboard() {
                 <PlaylistCardSm />
                 <PlaylistCardSm />
             </PlaylistCardContainerSm>
-            <h2>User Playlists</h2>
+            <div className="row mt-3 mr-4 ml-1">
+                <div className="col">
+                    <h2>User Playlists</h2>
+                </div>
+                <div className="col text-right mt-2">
+                    See All
+                </div>
+            </div>
+            
             <PlaylistCardContainerSm>
                 <PlaylistCardLg/>
                 <PlaylistCardLg/>

@@ -6,6 +6,7 @@ import Registration from './components/Registration/Registration';
 import Dashboard from './components/Dashboard/Dashboard';
 import SideBar from './components/SideBar/SideBar';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Search from './components/Search/Search';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.scss';
 import { UserContext, UserDataContext } from './helpers/UserContext';
@@ -28,10 +29,10 @@ function App() {
         method: 'GET',
         headers: {'Authorization' : `Bearer ${loggedUser}`}
     })
-        .then(res => {
-            setUserData(res.data)
-        })
-        .catch(err => console.log(err))
+      .then(res => {
+          setUserData(res.data)
+      })
+      .catch(err => console.log(err))
     }
   }, [user])
 
@@ -48,6 +49,7 @@ function App() {
               <PrivateRoute>
                 <SideBar>
                   <Route path="/dashboard" component={Dashboard} />
+                  <Route path="/search" component={Search} />
                 </SideBar> 
               </PrivateRoute>
             </Switch>
