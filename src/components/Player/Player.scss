@@ -16,15 +16,24 @@
 }
 
 .player__title {
-    width: 15%;
+    width: 20%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    div {
+        padding: 10px;
+    }
 }
 
 .player__controls {
-    width: 50%;
+    width: 60%;
 }
-.player__volume {
-    width: 15%;
+
+.player__controls__audioplayer {
+    width: 90%;
 }
+
 
 @media (max-width: 768px) {
     .player {
