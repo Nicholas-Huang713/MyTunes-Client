@@ -4,16 +4,42 @@ import Table from 'react-bootstrap/Table';
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
 import './Playlist.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import {playSong} from '../../store/actions/songActions';
+//redux
+import {playSong, 
+    setPlaying, 
+    setCurrentSong, 
+    setPause, 
+    setFaveIdList,
+    addToFaveIdList,
+    removeFromFaveIdList} from '../../store/actions/songActions';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function Playlist({searchList}) {
+    //redux
     const dispatch = useDispatch();
+    const compareSong = useSelector(state => state.song.compareSong);
+    const faveIdList = useSelector(state => state.song.faveIdList);
     const currentSong = useSelector(state => state.song.currentSong)
+    //state
     const [show, setShow] = useState(true);
 
-    const handlePlay = (song) => {
+    const handleSelectSong = (song) => {
         dispatch(playSong(song));
+        dispatch(setPlaying());
+        dispatch(setCurrentSong(song)); 
+    }
+
+    const handlePauseSong = () => {
+        dispatch(setPause());
+        dispatch(setCurrentSong(null));
+    }
+
+    const handleLikeSong = (song) => {
+        dispatch(addToFaveIdList(song));
+    }
+
+    const handleUnlikeSong = (id) => {
+        dispatch(removeFromFaveIdList(id));
     }
 
     return (
@@ -31,7 +57,7 @@ export default function Playlist({searchList}) {
             <tbody>
                 {searchList.length > 0 && 
                     searchList.map((song, index) => (
-                        <PlaylistRow key={song.id} song={song} currentSong={currentSong} index={index} handlePlay={handlePlay} />
+                        <PlaylistRow key={song.id} song={song} currentSong={currentSong} compareSong={compareSong} index={index} handleSelectSong={handleSelectSong} handlePauseSong={handlePauseSong} handleLikeSong={handleLikeSong} handleUnlikeSong={handleUnlikeSong} faveIdList={faveIdList}/>
                     )
                 )}
             </tbody>

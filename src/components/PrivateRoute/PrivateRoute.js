@@ -1,18 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import { useHistory } from "react-router-dom";
+import {getJwt} from '../../helpers/jwt';
 
 export default function PrivateRoute({children}) {
-    let history = useHistory();
+    const history = useHistory();
     const [token, setToken] = useState(null);
 
     useEffect(() => {
-        const jwt = localStorage.getItem('token');
-        if(!jwt) {
-            history.push('/')
+        const loggedUser = getJwt();
+        if(!loggedUser) {
+            history.push('/');
         } else {
-            setToken(jwt);
+            setToken(loggedUser);
         }
     }, [history])
+
+
     return (
         <>
             {token? <>{children}</> : <>Loading...</>}

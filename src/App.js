@@ -12,8 +12,11 @@ import './App.scss';
 import { UserContext, UserDataContext } from './helpers/UserContext';
 import {getJwt} from './helpers/jwt';
 import axios from 'axios';
-
+import { setData } from './store/actions/songActions';
+import { useDispatch } from 'react-redux';
+  
 function App() {
+  const dispatch = useDispatch();
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
   const userValue = useMemo(() => ({user, setUser}), [user, setUser]);
@@ -28,11 +31,21 @@ function App() {
         url: 'http://localhost:5000/users/getlogged',
         method: 'GET',
         headers: {'Authorization' : `Bearer ${loggedUser}`}
-    })
-      .then(res => {
-          setUserData(res.data)
       })
-      .catch(err => console.log(err))
+        .then(res => {
+            setUserData(res.data);
+        })
+        .catch(err => console.log(err))
+
+      axios({
+        url: 'http://localhost:5000/playlists/getuser',
+        method: 'GET',
+        headers: {'Authorization' : `Bearer ${loggedUser}`},
+      })
+      .then(res => {
+          dispatch(setData(res.data));
+      })
+      .catch(err => console.log(err));
     }
   }, [user])
 
