@@ -1,0 +1,21 @@
+.playlist__row__titlewrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playlist__row__moreicon {
+    cursor: pointer;
+}
+
+@media (max-width: 650px) {
+    .playlist__row__display {
+        display: none;
+    }
+}
+
+@media (min-width: 650px) {
+    .playlist__row__moreicon {
+        display: none;
+    }
+}

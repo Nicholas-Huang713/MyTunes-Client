@@ -1,6 +1,7 @@
 import {SET_DATA, LOG_OUT, PLAY_SONG, SEARCH_MUSIC, SET_PLAYING, SET_PAUSE, SET_CURRENT_SONG, SET_FAVE_ID_LIST, ADD_TO_FAVE_ID_LIST, REMOVE_FROM_FAVE_ID_LIST, SET_USER_FAVES} from './types';
 import axios from 'axios';
 import {getJwt} from '../../helpers/jwt';
+import {playlistRoute} from '../../routes';
 
 export const searchMusic = (inputText) => dispatch => {
     const options = {
@@ -55,7 +56,7 @@ export const setCurrentSong = (songDetails) => dispatch => {
 export const addToFaveIdList = (song) => dispatch => {
     const jwt = getJwt();
     axios({
-        url: 'http://localhost:5000/playlists/like',
+        url: `${playlistRoute}/like`,
         method: 'POST',
         headers: {'Authorization' : `Bearer ${jwt}`},
         data: song
@@ -65,24 +66,38 @@ export const addToFaveIdList = (song) => dispatch => {
                 type: ADD_TO_FAVE_ID_LIST,
                 payload: song.id
             })
+            axios({
+                url: `${playlistRoute}/getuser`,
+                method: 'GET',
+                headers: {'Authorization' : `Bearer ${jwt}`}
+            })
+                .then(res => dispatch({type: SET_DATA, payload: res.data}))
+                .catch(err => console.log(err))
         })
         .catch(err => console.log(err))
 }
 
 export const removeFromFaveIdList = (id) => dispatch => {
     const jwt = getJwt();
-    console.log("removing song")
+    console.log("id: " + id)
     axios({
-        url: 'http://localhost:5000/playlists/unlike',
+        url: `${playlistRoute}/unlike/${id}`,
         method: 'PUT',
-        headers: {'Authorization' : `Bearer ${jwt}`},
-        data: id
+        // data: {id},
+        headers: {'Authorization' : `Bearer ${jwt}`}
     })
         .then(() => {
             dispatch({
                 type: REMOVE_FROM_FAVE_ID_LIST,
                 payload: id
             })
+            axios({
+                url: `${playlistRoute}/getuser`,
+                method: 'GET',
+                headers: {'Authorization' : `Bearer ${jwt}`}
+            })
+                .then(res => dispatch({type: SET_DATA, payload: res.data}))
+                .catch(err => console.log(err))
         })
         .catch(err => console.log(err))
 }
@@ -99,7 +114,10 @@ export const setData = (userData) => dispatch => {
         payload: userData
     })
     const idList = userData.favorites.map(song => song.id);
-    setFaveIdList(idList);
+    dispatch({
+        type: SET_FAVE_ID_LIST,
+        payload: idList
+    })
 }
 
 export const setFaveIdList = (idList) => dispatch => {

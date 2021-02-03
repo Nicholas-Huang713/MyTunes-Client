@@ -21,7 +21,7 @@ export default function SideBar({children}) {
                         <ListGroup.Item action onClick={() => history.push('/search')}><SearchIcon className="mr-1"/>Search</ListGroup.Item>
                         <ListGroup.Item action onClick={() => history.push('/')}><LibraryMusicIcon className="mr-1"/>Your Library</ListGroup.Item>
                         <ListGroup.Item action onClick={() => history.push('/')}><LibraryAddIcon className="mr-1"/>Create Playlist</ListGroup.Item>
-                        <ListGroup.Item action onClick={() => history.push('/')}><FavoriteIcon className="mr-1"/>Liked Songs</ListGroup.Item>
+                        <ListGroup.Item action onClick={() => history.push('/favorites')}><FavoriteIcon className="mr-1"/>Liked Songs</ListGroup.Item>
                     </ListGroup>
                 </ListGroup.Item>
                 <ListGroup.Item>

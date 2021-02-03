@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import SideBar from './components/SideBar/SideBar';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Search from './components/Search/Search';
+import Favorites from './components/Favorites/Favorites';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.scss';
 import { UserContext, UserDataContext } from './helpers/UserContext';
@@ -14,6 +15,7 @@ import {getJwt} from './helpers/jwt';
 import axios from 'axios';
 import { setData } from './store/actions/songActions';
 import { useDispatch } from 'react-redux';
+import { userRoute, playlistRoute } from './routes';
   
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +30,7 @@ function App() {
     if(loggedUser) {
       setUser(loggedUser);
       axios({
-        url: 'http://localhost:5000/users/getlogged',
+        url: `${userRoute}/getlogged`,
         method: 'GET',
         headers: {'Authorization' : `Bearer ${loggedUser}`}
       })
@@ -38,7 +40,7 @@ function App() {
         .catch(err => console.log(err))
 
       axios({
-        url: 'http://localhost:5000/playlists/getuser',
+        url: `${playlistRoute}/getuser`,
         method: 'GET',
         headers: {'Authorization' : `Bearer ${loggedUser}`},
       })
@@ -47,7 +49,7 @@ function App() {
       })
       .catch(err => console.log(err));
     }
-  }, [user])
+  }, [user, dispatch])
 
   return (
     <>
@@ -63,6 +65,7 @@ function App() {
                 <SideBar>
                   <Route path="/dashboard" component={Dashboard} />
                   <Route path="/search" component={Search} />
+                  <Route path="/favorites" component={Favorites} />
                 </SideBar> 
               </PrivateRoute>
             </Switch>

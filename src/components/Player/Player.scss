@@ -28,14 +28,37 @@
 
 .player__controls {
     width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    div {
+        padding: 3px;
+    }
 }
 
 .player__controls__audioplayer {
     width: 90%;
 }
 
+.player__controls__progress {
+    width: 90%;
+}
+
 .player__volume {
     width: 20%;
+    // @include style-flex;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    div {
+        padding: 2px;
+    }
+}
+
+.player__volume__slider {
+    width: 90%;
 }
 
 
@@ -43,4 +66,12 @@
     .player {
         bottom: 50px;
     }
+    .player__volume {
+        display: none;
+        width: 20%;
+    }
 }
+
+// @media (min-width: 768px) {
+    
+// }

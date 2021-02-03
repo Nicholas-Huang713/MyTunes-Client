@@ -1,7 +1,5 @@
 import React, {useState, useContext, useEffect, useRef} from 'react';
 import Nav from 'react-bootstrap/Nav';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
@@ -115,33 +113,32 @@ export default function Player() {
                 <audio
                     src={currentSong.title && currentSong.preview}
                     autoPlay
-                    // controls
-                    // volume={0.5}
-                    // className="player__controls__audioplayer"
                     ref={audioRef} 
                     onEnded={() => handlePauseClick()}
                 />
-                {currentSong.title? (
-                    playing ? 
-                        <PauseCircleOutlineIcon onClick={() => handlePauseClick()} fontSize="large"/>
-                        :
-                        <PlayCircleOutlineIcon onClick={() => handlePlayClick(currentSong)} fontSize="large"/>
-                ) : (
-                    <PlayCircleOutlineIcon fontSize="large"/>
-                )}
-                {/* <br/> */}
-                {/* <div > */}
-                    <LinearProgress variant="determinate" value={progress}/>
-                {/* </div> */}
+                <div>
+                    {currentSong.title? (
+                        playing ? 
+                            <PauseCircleOutlineIcon onClick={() => handlePauseClick()} fontSize="large"/>
+                            :
+                            <PlayCircleOutlineIcon onClick={() => handlePlayClick(currentSong)} fontSize="large"/>
+                    ) : (
+                        <PlayCircleOutlineIcon fontSize="large"/>
+                    )}
+                </div>
+                    <div className="player__controls__progress"><LinearProgress variant="determinate" value={progress}/></div>
+                    
+               
             </div>
             <div className="player__volume mr-4">
-                <VolumeDown />
-
-                {currentSong.title ? 
-                    <Slider value={volume} onChange={handleVolumeChange} style={{width: '85%'}} aria-labelledby="continuous-slider" />
-                    :
-                    <Slider disabled defaultValue={30} aria-labelledby="disabled-slider" style={{width: '80%'}}/>
-                }
+                <div><VolumeDown /></div>
+                <div className="mt-2 player__volume__slider">
+                    {currentSong.title ? 
+                        <Slider value={volume} onChange={handleVolumeChange} style={{width: '85%'}} aria-labelledby="continuous-slider" />
+                        :
+                        <Slider disabled value={volume} onChange={handleVolumeChange} aria-labelledby="disabled-slider" style={{width: '80%'}}/>
+                    }
+                </div>
             </div>
         </Nav>
     )

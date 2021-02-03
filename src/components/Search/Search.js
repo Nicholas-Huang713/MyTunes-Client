@@ -40,12 +40,10 @@ export default function Search() {
                 <InputGroup.Append>
                     <Button variant="secondary" onClick={handleSearch}>Button</Button>
                 </InputGroup.Append>
-                
             </InputGroup>
-            
 
             <div className="search__list">
-                <Playlist searchList={searchList}/>
+                <Playlist songList={searchList}/>
             </div>
         </div>
     )

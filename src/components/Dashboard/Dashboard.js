@@ -3,12 +3,9 @@ import PlaylistCardContainerSm from '../../components/PlaylistCardContainerSm/Pl
 import PlaylistCardSm from '../../components/PlaylistCardSm/PlaylistCardSm';
 import PlaylistCardLg from '../../components/PlaylistCardLg/PlaylistCardLg';
 import './Dashboard.scss';
-import {checkUser} from '../../helpers/useCheckUser';
 
 export default function Dashboard() {
-    useEffect(() => {
-         
-    }, [])
+   
 
     return (
         <div className="dashboard">
