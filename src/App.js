@@ -13,7 +13,7 @@ import './App.scss';
 import { UserContext, UserDataContext } from './helpers/UserContext';
 import {getJwt} from './helpers/jwt';
 import axios from 'axios';
-import { setData } from './store/actions/songActions';
+import { setData } from './store/actions/songActions';   
 import { useDispatch } from 'react-redux';
 import { userRoute, playlistRoute } from './routes';
   
@@ -26,7 +26,6 @@ function App() {
   
   useEffect(() => {
     const loggedUser = getJwt();
-    console.log(loggedUser);
     if(loggedUser) {
       setUser(loggedUser);
       axios({
@@ -50,9 +49,9 @@ function App() {
       .catch(err => console.log(err));
     }
   }, [user, dispatch])
-
+  
   return (
-    <>
+    <div data-testid="app">
     <Router>
       <UserContext.Provider value={userValue}>
         <UserDataContext.Provider value={userDataValue}>
@@ -73,7 +72,7 @@ function App() {
         </UserDataContext.Provider>
       </UserContext.Provider>
     </Router>
-    </>
+    </div>
   );
 }
 

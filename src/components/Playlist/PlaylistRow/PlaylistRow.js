@@ -15,7 +15,7 @@ export default function PlaylistRow({index, song, handleSelectSong, handlePauseS
     const [show, setShow] = useState(false);
     const [toolText, setToolText] = useState('');
 
-    const handleLikeClick = () => {
+    const handleLikeClick = () => {        
         handleLikeSong(song);
         setShow(true);
         setToolText('Added to favorites')
@@ -23,14 +23,18 @@ export default function PlaylistRow({index, song, handleSelectSong, handlePauseS
             setShow(false)
         }, 1000)
     }
-    
+
     const handleUnlikeClick = () => {
         handleUnlikeSong(song.id);
-        setShow(true);
+        setShow(true);    
         setToolText('Removed from favorites')
         setTimeout(() => {
             setShow(false)
         }, 1000)
+    }
+
+    const playStyle = {
+        width: '25px'
     }
 
     return (
@@ -42,12 +46,12 @@ export default function PlaylistRow({index, song, handleSelectSong, handlePauseS
             <td className="playlist__row__display">
                 {compareSong && compareSong.id === song.id ? (
                     hovered ? 
-                    <PauseCircleFilledIcon onClick={handlePauseSong}/>
+                    <PauseCircleFilledIcon onClick={handlePauseSong} style={playStyle}/>
                     :
-                    <img src={sound} alt="sound icon" style={{width: '25px'}}/>
+                    <img src={sound} alt="sound icon" style={playStyle}/>
                 ) : (
                     hovered ?
-                    <PlayArrowIcon onClick={() => handleSelectSong(song)} />
+                    <PlayArrowIcon onClick={() => handleSelectSong(song)} style={playStyle} />
                     :
                     <span className="mr-2">{index + 1}</span> 
                 )}
@@ -57,7 +61,7 @@ export default function PlaylistRow({index, song, handleSelectSong, handlePauseS
                     <div>
                         <img src={song.album.cover_small} alt="album cover art" className="mr-2"/>
                         {song.title}
-                    </div>
+                    </div> 
                     <div className="playlist__row__moreicon">
                         <MoreHorizIcon onClick={() => handleMoreClick(song)} />
                     </div>
@@ -70,9 +74,9 @@ export default function PlaylistRow({index, song, handleSelectSong, handlePauseS
                     :
                     <FavoriteBorderIcon ref={target} onClick={() => handleLikeClick()}/>
                 }
-                <Overlay target={target.current} show={show} placement="right">
+                <Overlay target={target.current} show={show} placement="bottom">
                     {(props) => (
-                    <Tooltip id="overlay-example" {...props}>
+                    <Tooltip id="overlay-example" {...props} transition={true} >
                         {toolText}
                     </Tooltip>
                     )}

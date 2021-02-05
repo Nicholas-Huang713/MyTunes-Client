@@ -43,6 +43,7 @@ export default function Player() {
     const [anchorEl, setAnchorEl] = useState(null);
     const [progress, setProgress] = useState(0);
     const [volume, setVolume] = useState(30);
+    const [volumeOpen, setVolumeOpen] = useState(false);
 
     useEffect(() => {
         if(audioRef && audioRef.current) {
@@ -76,12 +77,10 @@ export default function Player() {
 
     const handleLikeSong = (song) => {
         dispatch(addToFaveIdList(song.id));
-        // addFaves(song);
     }
 
     const handleUnlikeSong = (id) => {
         dispatch(removeFromFaveIdList(id));
-        // removeFaves(id);
     }
 
     const handleVolumeChange = (event, newValue) => {
@@ -95,7 +94,7 @@ export default function Player() {
                     <>  <div>
                             <img src={currentSong.album.cover_small} alt="album coverart" />
                         </div>
-                        <div>
+                        <div className="player__title__text">
                             <span className="text-bold">{currentSong.title}</span>
                             <br/>
                             <span>{currentSong.artist.name}</span>
@@ -126,17 +125,43 @@ export default function Player() {
                         <PlayCircleOutlineIcon fontSize="large"/>
                     )}
                 </div>
-                    <div className="player__controls__progress"><LinearProgress variant="determinate" value={progress}/></div>
+                <div className="player__controls__progress">
+                    <div className="player__title-sm">Hello World</div>
+                    <LinearProgress variant="determinate" value={progress}/>
+                </div>
                     
                
             </div>
             <div className="player__volume mr-4">
-                <div><VolumeDown /></div>
+                <span className="player__slider-vert text-center">
+                    {volumeOpen && 
+                        <Slider
+                            orientation="vertical"
+                            value={volume}
+                            aria-labelledby="vertical-slider"
+                            onChange={handleVolumeChange}
+                            style={{height: '100px'}}
+                        />
+                    }
+                </span>
+                <div>
+                    <span className="player__volume__icon-sm"><VolumeDown onClick={() => setVolumeOpen(!volumeOpen)}/></span>
+                    <span className="player__volume__icon-lg"><VolumeDown /></span>
+                    
+                </div>
                 <div className="mt-2 player__volume__slider">
                     {currentSong.title ? 
-                        <Slider value={volume} onChange={handleVolumeChange} style={{width: '85%'}} aria-labelledby="continuous-slider" />
+                        <Slider value={volume} 
+                        onChange={handleVolumeChange} 
+                        style={{width: '85%'}} 
+                        aria-labelledby="continuous-slider" />
                         :
-                        <Slider disabled value={volume} onChange={handleVolumeChange} aria-labelledby="disabled-slider" style={{width: '80%'}}/>
+                        <Slider 
+                            disabled 
+                            value={volume} 
+                            onChange={handleVolumeChange} 
+                            aria-labelledby="disabled-slider" 
+                            style={{width: '80%'}}/>
                     }
                 </div>
             </div>
