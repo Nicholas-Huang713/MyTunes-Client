@@ -28,22 +28,17 @@ export default function RegForm({handleSubmit, errMsg}) {
         handleSubmit(newUser);
     }
 
-    // const resetInputs = () => {
-    //     setFirstName('')
-    //     setLastName('')
-    //     setUserName('')
-    //     setEmail('')
-    //     setPassword('')
-    // }
-
     return (
         <Form className="reg-form" onSubmit={handleOnSubmit} noValidate validated={validated}>
             <div className="reg-form-title">Register Here</div>
             {errMsg !== '' && <span style={{color: 'red'}}>{errMsg}</span>}
             <div className="reg-form-content">
                 <Form.Group>
-                    <Form.Label>First Name</Form.Label>
+                    <Form.Label id="first-name">First Name</Form.Label>
                     <Form.Control 
+                    
+                    name="first-name"
+                        aria-labelledby="first-name"
                         required
                         type="text" 
                         placeholder="Enter first name" 
@@ -56,8 +51,9 @@ export default function RegForm({handleSubmit, errMsg}) {
                     </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Last Name</Form.Label>
+                    <Form.Label id="last-name">Last Name</Form.Label>
                     <Form.Control  
+                        aria-labelledby="last-name"
                         required
                         minLength="3"
                         type="text" 
@@ -70,8 +66,9 @@ export default function RegForm({handleSubmit, errMsg}) {
                     </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>UserName</Form.Label>
+                    <Form.Label id="username">UserName</Form.Label>
                     <Form.Control 
+                        aria-labelledby="username"
                         required
                         type="text" 
                         minLength="5"
@@ -84,8 +81,9 @@ export default function RegForm({handleSubmit, errMsg}) {
                     </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label id="email-address">Email Address</Form.Label>
                     <Form.Control 
+                        aria-labelledby="email-address"
                         required
                         type="email" 
                         placeholder="Enter email" 
@@ -97,8 +95,9 @@ export default function RegForm({handleSubmit, errMsg}) {
                     </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label id="password">Password</Form.Label>
                     <Form.Control 
+                        aria-labelledby="password"
                         required
                         minLength="6"
                         type="password" 

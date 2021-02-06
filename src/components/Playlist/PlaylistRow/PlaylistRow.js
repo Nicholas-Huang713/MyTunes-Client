@@ -61,7 +61,7 @@ export default function PlaylistRow({index, song, handleSelectSong, handlePauseS
                     <div>
                         <img src={song.album.cover_small} alt="album cover art" className="mr-2"/>
                         {song.title}
-                    </div> 
+                    </div>
                     <div className="playlist__row__moreicon">
                         <MoreHorizIcon onClick={() => handleMoreClick(song)} />
                     </div>
@@ -70,13 +70,18 @@ export default function PlaylistRow({index, song, handleSelectSong, handlePauseS
             </td>
             <td className="playlist__row__display">
                 {faveIdList.includes(song.id) ? 
-                    <FavoriteIcon ref={target} onClick={() => handleUnlikeClick()}/>
+                    // <button data-testid='like-button' onClick={() => handleUnlikeClick()}>
+                        <FavoriteIcon ref={target} data-testid="unlike-button" onClick={() => handleUnlikeClick()} />
+                    // </button>
                     :
-                    <FavoriteBorderIcon ref={target} onClick={() => handleLikeClick()}/>
+                    // <button data-testid='like-button' onClick={() => handleLikeClick()}>
+                        <FavoriteBorderIcon ref={target} data-testid="like-button" onClick={() => handleLikeClick()}/>
+                    // </button>
+                    
                 }
                 <Overlay target={target.current} show={show} placement="bottom">
                     {(props) => (
-                    <Tooltip id="overlay-example" {...props} transition={true} >
+                    <Tooltip id="overlay-example" {...props} transition="true" >
                         {toolText}
                     </Tooltip>
                     )}

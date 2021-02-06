@@ -10,6 +10,7 @@ import {playSong,
     setPlaying, 
     setCurrentSong, 
     setPause, 
+    setFaveIdList,
     addToFaveIdList,
     removeFromFaveIdList} from '../../store/actions/songActions';
 import { useSelector, useDispatch } from 'react-redux';
