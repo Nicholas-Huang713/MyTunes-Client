@@ -18,13 +18,14 @@ export default function RegForm({handleSubmit, errMsg}) {
         if (form.checkValidity() === false) {
           e.preventDefault();
           e.stopPropagation();
+          setValidated(true)
+          return
         }
         setValidated(true);
 
         const newUser = {
             firstName, lastName, email, userName, password
         };
-        console.log(newUser);
         handleSubmit(newUser);
     }
 
@@ -36,8 +37,7 @@ export default function RegForm({handleSubmit, errMsg}) {
                 <Form.Group>
                     <Form.Label id="first-name">First Name</Form.Label>
                     <Form.Control 
-                    
-                    name="first-name"
+                        name="first-name"
                         aria-labelledby="first-name"
                         required
                         type="text" 

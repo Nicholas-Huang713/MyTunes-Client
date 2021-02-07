@@ -2,24 +2,25 @@ import React, {useState} from 'react'
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import './PlaylistCardSm.scss';
 
-export default function PlaylistCardSm() {
+export default function PlaylistCardSm(props) {
     const [hovered, setHovered] = useState(false);
 
     return (
         <div 
+            data-testid="card-sm"
             className="playlist-card-sm" 
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             // onDoubleClick= {() => }
         >
             <div className="playlist-card-sm-img mr-3 ml-1">
-                <img alt="album cover art" src="https://cdns-images.dzcdn.net/images/cover/e2b36a9fda865cb2e9ed1476b6291a7d/56x56-000000-80-0-0.jpg" />
+                <img alt="album cover art" src={props.song.preview} />
             </div>
             <div className="playlist-card-sm-title">
-                Playlist 1
+                {props.title}
             </div>
             {hovered && 
-                <PlayCircleFilledIcon fontSize="large" className="playlist-card-sm-playicon"/>
+                <PlayCircleFilledIcon data-testid='play-button' fontSize="large" className="playlist-card-sm-playicon"/>
             }
         </div>
     )

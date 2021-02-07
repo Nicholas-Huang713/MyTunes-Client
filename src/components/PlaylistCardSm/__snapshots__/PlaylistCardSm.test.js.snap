@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PlaylistCardSm /> should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="playlist-card-sm"
+    data-testid="card-sm"
+  >
+    <div
+      class="playlist-card-sm-img mr-3 ml-1"
+    >
+      <img
+        alt="album cover art"
+        src="/img.jpg"
+      />
+    </div>
+    <div
+      class="playlist-card-sm-title"
+    >
+      My Playlist 1
+    </div>
+  </div>
+</DocumentFragment>
+`;
